@@ -1,0 +1,21 @@
+<#import "template.ftl" as layout>
+<@layout.registrationLayout displayInfo=social.displayInfo displayWide=(realm.password && social.providers??); section>
+    <#if section = "header">
+    Log In
+    <#elseif section = "form">
+      <div id="kc-form-wrapper" <#if realm.password && social.providers??>class="${properties.kcFormSocialAccountContentClass!} ${properties.kcFormSocialAccountClass!}"</#if>>
+        <#if realm.password>
+            <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+                <label for="user_name">UserName:</label>
+                <input type="text" id="UserName" name="UserName">
+
+                <label for="password">Password:</label>
+                <input type="password" id="Password" name="Password">
+
+                <button type="submit">Signin</button>
+            </form>
+        </#if>
+        </div>
+    </#if>
+
+</@layout.registrationLayout>
